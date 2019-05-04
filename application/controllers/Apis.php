@@ -10,7 +10,6 @@ class Apis extends CI_Controller {
 
     public function tokens() {
         if($this->input->get("token") == "" || $this->input->get("token") != config_item("token")) {
-            die;
             show_404();
         }
         $items = $this->Client_model->get_all_clients();
