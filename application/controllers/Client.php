@@ -48,6 +48,7 @@ class Client extends CI_Controller{
 				'mac' => $this->input->post('mac'),
 				'token' => sha1(time().rand(1000,9999).$this->input->post('mac')),
 				'comment' => $this->input->post('comment'),
+                'active' => (bool) $this->input->post("active"),
             );
             
             $client_id = $this->Client_model->add_client($params);
@@ -84,8 +85,8 @@ class Client extends CI_Controller{
                 $params = array(
 					'package_id' => $this->input->post('package_id'),
 					'mac' => $this->input->post('mac'),
-					'token' => $this->input->post('token'),
 					'comment' => $this->input->post('comment'),
+                    'active' => (bool) $this->input->post("active"),
                 );
 
                 $this->Client_model->update_client($id,$params);            

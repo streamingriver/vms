@@ -12,7 +12,7 @@ class Client_model extends CI_Model
     }
     
     public function get_client_by_hash($hash) {
-        return $this->db->get_where('clients', array("token"=>$hash))->row_array();
+        return $this->db->get_where('clients', array("token"=>$hash,'active'=>1))->row_array();
     }
 
     /*

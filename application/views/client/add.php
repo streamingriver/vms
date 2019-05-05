@@ -38,6 +38,14 @@
 							<span class="text-danger"><?php echo form_error('comment');?></span>
 						</div>
 					</div>
+					<div class="col-md-6">
+						<label for="active" class="control-label">Active</label>
+						<div class="form-group">
+							<input type="hidden" value="0" />
+							<?php echo form_checkbox('active', 1, (bool)$this->input->post('active')); ?>
+							<span class="text-danger"><?php echo form_error('active');?></span>
+						</div>
+					</div>
 				</div>
 			</div>
           	<div class="box-footer">

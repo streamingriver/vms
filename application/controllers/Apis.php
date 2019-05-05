@@ -25,6 +25,9 @@ class Apis extends CI_Controller {
         if(!$client = $this->Client_model->get_client_by_hash($hash)) {
             show_404();
         }
+        if(!$client['active']) {
+            show_404();
+        }
         $channels = $this->Channel_model->by_package_id($client['package_id']);
 
         header('Content-Type: text/plain');
@@ -37,6 +40,9 @@ class Apis extends CI_Controller {
 
     public function channel($hash, $channel) {
         if(!$client = $this->Client_model->get_client_by_hash($hash)) {
+            show_404();
+        }
+        if(!$client['active']) {
             show_404();
         }
 

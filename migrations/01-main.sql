@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `mac` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `package_id` int(11) NOT NULL,
-  `active` int(11) NULL,
+  `active` BOOLEAN NULL DEFAULT TRUE,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
