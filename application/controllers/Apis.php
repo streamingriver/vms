@@ -34,7 +34,7 @@ class Apis extends CI_Controller {
         printf("#EXTM3U\n");
         foreach($channels as $channel) {
             printf('#EXTINF:-1 tvg-id="%s",%s'."\n", $channel['name'], $channel['name']);
-            printf("%s%s\n",config_item('host'), site_url(sprintf("/apis/ii1/channel/%s/%s", $hash, $channel['url'])));
+            printf("%s%s\n",get_full_host(), site_url(sprintf("/apis/ii1/channel/%s/%s", $hash, $channel['url'])));
         }
     }
 
