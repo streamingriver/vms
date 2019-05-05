@@ -2,6 +2,9 @@ CREATE TABLE IF NOT EXISTS `channels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `epg1` varchar(255) NULL,
+  `epg2` varchar(255) NULL,
+  `epg3` varchar(255) NULL,
   `stream_url` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -18,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `mac` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `package_id` int(11) NOT NULL,
+  `active` int(11) NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
