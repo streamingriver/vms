@@ -28,7 +28,8 @@
                         </td>
                     </tr>
                     <tr>
-                    <td colspan="6"><?php echo sprintf("%s/apis/ii1/register/%s", /*config_item("host")*/ $_SERVER["HTTP_HOST"], $c['token']); ?></td>
+                    <?php $proto = "https"; if($_SERVER['HTTP_PORT'] == 80) $proto = $http;
+                    <td colspan="6"><?php echo sprintf("%s://%s/apis/ii1/register/%s", $proto,/*config_item("host")*/ $_SERVER["HTTP_HOST"], $c['token']); ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </table>
