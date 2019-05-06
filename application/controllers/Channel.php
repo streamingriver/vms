@@ -43,7 +43,7 @@ class Channel extends CI_Controller{
             $params = array(
 				'url' => substr(sha1($this->input->post('name').time()), 0, 16),
 				'name' => htmlspecialchars($this->input->post('name')),
-				'stream_url' => escapeshellarg($this->input->post('stream_url')),
+				'stream_url' => trim(str_replace("'",'',str_replace('"','',escapeshellarg($this->input->post('stream_url'))))),
             );
             
             $channel_id = $this->Channel_model->add_channel($params);
@@ -75,7 +75,7 @@ class Channel extends CI_Controller{
             {   
                 $params = array(
 					'name' => htmlspecialchars($this->input->post('name')),
-					'stream_url' => escapeshellarg($this->input->post('stream_url')),
+                    'stream_url' => trim(str_replace("'",'',str_replace('"','',escapeshellarg($this->input->post('stream_url'))))),
                 );
 
                 $this->Channel_model->update_channel($id,$params);            
@@ -122,6 +122,6 @@ class Channel extends CI_Controller{
         fwrite($h, "cmd1\n");
         fclose($h);
 
-        //redirect('channel');
+        redirect('channel');
     }
 }

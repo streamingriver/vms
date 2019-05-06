@@ -32,12 +32,6 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="token" class="control-label">Token</label>
-						<div class="form-group">
-							<input type="text" name="token" value="<?php echo ($this->input->post('token') ? $this->input->post('token') : $client['token']); ?>" class="form-control" id="token" />
-						</div>
-					</div>
-					<div class="col-md-6">
 						<label for="comment" class="control-label"><span class="text-danger">*</span>Comment</label>
 						<div class="form-group">
 							<textarea name="comment" class="form-control" id="comment"><?php echo ($this->input->post('comment') ? $this->input->post('comment') : $client['comment']); ?></textarea>
