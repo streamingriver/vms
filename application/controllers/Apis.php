@@ -49,7 +49,7 @@ class Apis extends CI_Controller {
         header('Content-Type: text/plain');
         printf("#EXTM3U\n");
         printf("#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2024000\n");
-        printf("%s/streams/%s/stream.m3u8?token=%s\n", config_item('host'), $channel, $hash);
+        printf("%s/streams/%s/stream.m3u8?token=%s\n", get_full_host(), $channel, $hash);
 
     }
 }
