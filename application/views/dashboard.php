@@ -3,7 +3,10 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">
-                Please navigate to the appropriate controller / action to open the associated function with your generated code.
+                steps:<br/>
+                1: Create packages<br/>
+                2: Create Channel and press "add" on right side of channels to add channel to package<br/>
+                3: Add client. After you add client, you see url for client to m3u format playlist<br/>
                 </h3>
             </div>
         </div>
