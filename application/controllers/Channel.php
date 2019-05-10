@@ -5,6 +5,9 @@
  */
  
 class Channel extends CI_Controller{
+
+    private $fifo = "/var/www/sr/_gen/streamingriver";
+
     function __construct()
     {
         parent::__construct();
@@ -108,6 +111,14 @@ class Channel extends CI_Controller{
             show_error('The channel you are trying to delete does not exist.');
     }
     
+    public function restart($ch) {
+        $ch = escapeshellarg($ch);
+        $cmd = sprintf("restart %s", $ch);
+        $this->_fifo_send($cmd);
+        redirect("channel");
+
+    }
+
     public function update() {
         $dir = sprintf("%s%s", "/var/www/sr/_gen/", "");
         $items = $this->Channel_model->get_all_channels();
@@ -117,11 +128,15 @@ class Channel extends CI_Controller{
         }
         file_put_contents($dir."ffmpeg.txt", $output);
 
-        $h = fopen("/var/www/sr/_gen/streamingriver", "w"); 
-        stream_set_blocking($h,false);
-        fwrite($h, "cmd1\n");
-        fclose($h);
+        $this->_fifo_send("cmd1");
 
         redirect('channel');
+    }
+
+    private function _fifo_send($cmd) {
+        $h = fopen($this->fifo, "w"); 
+        stream_set_blocking($h,false);
+        fwrite($h, sprintf("%s\n", $cmd));
+        fclose($h);
     }
 }

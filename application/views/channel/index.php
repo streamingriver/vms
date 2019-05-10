@@ -27,6 +27,7 @@
 						<td>
                             <a href="<?php echo site_url('channel/edit/'.$c['id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
                             <a href="<?php echo site_url('channel/remove/'.$c['id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            <a href="<?php echo site_url('channel/restart/'.$c['url']); ?>" class="btn btn-success btn-xs"><span class="fa fa-trash"></span> Restart</a>
                         </td>
                         <?php foreach($packages as $package): ?>
                             <?php $items = array($c['id'] => array()); ?>
