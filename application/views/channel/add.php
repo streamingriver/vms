@@ -14,6 +14,16 @@
 							<span class="text-danger"><?php echo form_error('name');?></span>
 						</div>
 					</div>
+					<?php if(config_item("gui.can_edit_channel_url")): ?>
+					<div class="col-md-6">
+						<label for="url" class="control-label"><span class="text-danger">*</span>url</label>
+						<div class="form-group">
+							<input type="text" name="url" value="<?php echo htmlspecialchars($this->input->post('url')); ?>" class="form-control" id="url" />
+							<span class="text-danger"><?php echo form_error('url');?></span>
+						</div>
+					</div>
+					<?php endif; ?>
+
 					<div class="col-md-6">
 						<label for="stream_url" class="control-label"><span class="text-danger">*</span>Stream Url</label>
 						<div class="form-group">

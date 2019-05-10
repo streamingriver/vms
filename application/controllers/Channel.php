@@ -38,16 +38,25 @@ class Channel extends CI_Controller{
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('name','Name','required');
-		$this->form_validation->set_rules('stream_url','Stream Url','required');
-		
-		if($this->form_validation->run())     
+        $this->form_validation->set_rules('name','Name','required');
+        $this->form_validation->set_rules('stream_url','Stream Url','required');
+        if(config_item("gui.can_edit_channel_url")) {
+            $this->form_validation->set_rules('url','Url','required');
+        }
+        
+        if($this->form_validation->run())     
         {   
             $params = array(
-				'url' => substr(sha1($this->input->post('name').time()), 0, 16),
-				'name' => htmlspecialchars($this->input->post('name')),
-				'stream_url' => trim(str_replace("'",'',str_replace('"','',escapeshellarg($this->input->post('stream_url'))))),
+                'name' => htmlspecialchars($this->input->post('name')),
+                'stream_url' => trim(str_replace("'",'',str_replace('"','',escapeshellcmd($this->input->post('stream_url'))))),
             );
+
+            if(config_item("gui.can_edit_channel_url")) {
+                $params['url'] = $this->input->post("url");
+            } else {
+                $params['url'] = substr(sha1($this->input->post('name').time()), 0, 16);
+            }
+
             
             $channel_id = $this->Channel_model->add_channel($params);
             redirect('channel/index');
@@ -71,15 +80,21 @@ class Channel extends CI_Controller{
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('name','Name','required');
-			$this->form_validation->set_rules('stream_url','Stream Url','required');
-		
-			if($this->form_validation->run())     
+            $this->form_validation->set_rules('name','Name','required');
+            $this->form_validation->set_rules('stream_url','Stream Url','required');
+            if(config_item("gui.can_edit_channel_url")) {
+                $this->form_validation->set_rules('url','Url','required');
+            }
+        
+            if($this->form_validation->run())     
             {   
                 $params = array(
-					'name' => htmlspecialchars($this->input->post('name')),
+                    'name' => htmlspecialchars($this->input->post('name')),
                     'stream_url' => trim(str_replace("'",'',str_replace('"','',escapeshellarg($this->input->post('stream_url'))))),
                 );
+                if(config_item("gui.can_edit_channel_url")) {
+                    $params['url'] = escapeshellcmd($this->input->post("url"));
+                }
 
                 $this->Channel_model->update_channel($id,$params);            
                 redirect('channel/index');
