@@ -59,6 +59,7 @@ class Channel extends CI_Controller{
 
             
             $channel_id = $this->Channel_model->add_channel($params);
+            $this->update(false);
             redirect('channel/index');
         }
         else
@@ -97,6 +98,7 @@ class Channel extends CI_Controller{
                 }
 
                 $this->Channel_model->update_channel($id,$params);            
+                $this->update(false);
                 redirect('channel/index');
             }
             else
@@ -134,7 +136,7 @@ class Channel extends CI_Controller{
 
     }
 
-    public function update() {
+    public function update($redirect=true) {
         $dir = sprintf("%s%s", "/var/www/sr/_gen/", "");
         $items = $this->Channel_model->get_all_channels();
         $output = '';
@@ -145,7 +147,7 @@ class Channel extends CI_Controller{
 
         $this->_fifo_send("cmd1");
 
-        redirect('channel');
+        if($redirect) redirect('channel');
     }
 
     private function _fifo_send($cmd) {
