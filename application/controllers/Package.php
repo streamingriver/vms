@@ -90,6 +90,8 @@ class Package extends CI_Controller{
         // check if the package exists before trying to delete it
         if(isset($package['id']))
         {
+            $this->load->model('Channels_package_model');
+            $this->Channels_package_model->delete_by_package($id);
             $this->Package_model->delete_package($id);
             redirect('package/index');
         }

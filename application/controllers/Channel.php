@@ -121,6 +121,8 @@ class Channel extends CI_Controller{
         // check if the channel exists before trying to delete it
         if(isset($channel['id']))
         {
+            $this->load->model('Channels_package_model');
+            $this->Channels_package_model->delete_by_channel($id);
             $this->Channel_model->delete_channel($id);
             redirect('channel/index');
         }

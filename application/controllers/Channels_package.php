@@ -37,5 +37,13 @@ class Channels_package extends CI_Controller{
         redirect('channel');
     }
 
+    function delete_by_channel($chid) {
+        return $this->db->delete('channels_packages',array('channel_id'=>$chid));
+    }
+
+    function delete_by_package($pkgid) {
+        return $this->db->delete('channels_packages',array('package_id'=>$pkgid));
+    }
+
     
 }
