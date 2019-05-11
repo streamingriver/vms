@@ -93,6 +93,13 @@
                                 <i class="fa fa-desktop"></i> <span>Package</span>
                             </a>
                         </li>
+                        <?php foreach(list_modules() as $module): ?>
+                        <li>
+                            <a href="<?php echo site_url($module['url']);?>">
+                                <i class="fa fa-desktop"></i> <span><?php echo $module['name']; ?></span>
+                            </a>
+                        </li>
+                        <?php endforeach; ?>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
