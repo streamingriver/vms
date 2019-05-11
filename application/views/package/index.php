@@ -20,7 +20,7 @@
 						<td><?php echo $p['name']; ?></td>
 						<td>
                             <a href="<?php echo site_url('package/edit/'.$p['id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
-                            <a href="<?php echo site_url('package/remove/'.$p['id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            <?php /*<a href="<?php echo site_url('package/remove/'.$p['id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>*/ ?>
                         </td>
                     </tr>
                     <?php } ?>
