@@ -28,7 +28,7 @@
                         </td>
                     </tr>
                     <tr>
-                    <td colspan="6"><?php echo sprintf("%s/apis/ii1/register/%s", get_full_host(), $c['token']); ?></td>
+                    <td colspan="6">m3u playlist url: <?php echo sprintf("%s/apis/ii1/register/%s", get_full_host(), $c['token']); ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </table>
