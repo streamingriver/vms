@@ -1,4 +1,4 @@
-<div class="row">
+    <div class="row">
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
@@ -34,9 +34,9 @@
                             <?php if(isset($cp[$c['id']])) $items = $cp[$c['id']]; ?>
                             <td>
                             <?php if(!in_array($package['id'], $items)): ?>
-                            <?php echo anchor(sprintf("channels_package/add/%s/%s", $c['id'], $package['id']), 'add');?>
+                            <?php echo anchor(sprintf("channels_package/add/%s/%s", $c['id'], $package['id']), 'add',array('class'=>'btn btn-danger btn-xs'));?>
                             <?php else: ?>
-                            <?php echo anchor(sprintf("channels_package/rm/%s/%s", $c['id'], $package['id']), 'rm');?>
+                            <?php echo anchor(sprintf("channels_package/rm/%s/%s", $c['id'], $package['id']), 'rm',array('class'=>'btn btn-success btn-xs'));?>
                             <?php endif; ?>
                             </td>
                         <?php endforeach; ?>
