@@ -84,11 +84,6 @@
                             </a>
                         </li>
 						<li>
-                            <a href="<?php echo site_url('client/index');?>">
-                                <i class="fa fa-desktop"></i> <span>Client</span>
-                            </a>
-                        </li>
-						<li>
                             <a href="<?php echo site_url('package/index');?>">
                                 <i class="fa fa-desktop"></i> <span>Package</span>
                             </a>
