@@ -52,7 +52,7 @@ class Client extends MX_Controller{
             );
             
             $client_id = $this->Client_model->add_client($params);
-            redirect('clients');
+            redirect('client');
         }
         else
         {
@@ -90,7 +90,7 @@ class Client extends MX_Controller{
                 );
 
                 $this->Client_model->update_client($id,$params);            
-                redirect('clients');
+                redirect('client');
             }
             else
             {
@@ -116,7 +116,7 @@ class Client extends MX_Controller{
         if(isset($client['id']))
         {
             $this->Client_model->delete_client($id);
-            redirect('clients');
+            redirect('client');
         }
         else
             show_error('The client you are trying to delete does not exist.');
