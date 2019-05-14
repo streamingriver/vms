@@ -121,5 +121,14 @@ class Client extends MX_Controller{
         else
             show_error('The client you are trying to delete does not exist.');
     }
+
+    public function rehash($id) {
+        $client = $this->Client_model->get_client($id);
+        if(!isset($client['id'])) {
+            redirect('client');
+        }
+        $this->Client_model->update_client($id, array("token"=>sha1(time().rand(1000,9999).$client['mac'])));
+        redirect('client');
+    }
     
 }

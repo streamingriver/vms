@@ -16,10 +16,14 @@ class Apis extends MX_Controller {
             show_404();
         }
         $items = $this->Client_model->get_all_clients();
+
         $response = array();
         foreach($items as $item) {
-            $response[$item['token']] = "true";
+            $response['addr'][$item['addr']] = true;
+            $response['ip'][$item['token']] = $item['addr'];
+            $response['ch'][$item['token']] = $item['ch'];
         }
+
         header('Content-Type: application/json');
         echo json_encode($response);
     }
@@ -31,6 +35,13 @@ class Apis extends MX_Controller {
         if(!$client['active']) {
             show_404();
         }
+
+        $this->Client_model->update_client(
+            $client['id'],
+            array('addr'=>$_SERVER['REMOTE_ADDR'])
+        );
+
+        @file_get_contents("http://127.0.0.1:8000/reload");
 
         $channels = $this->Channel_model->by_package_id($client['package_id']);
 
@@ -49,6 +60,17 @@ class Apis extends MX_Controller {
         if(!$client['active']) {
             show_404();
         }
+
+        if($client['addr'] != $_SERVER['REMOTE_ADDR']) {
+            show_404();
+        }
+
+        $this->Client_model->update_client(
+            $client['id'],
+            array('ch'=>$channel)
+        );
+
+        @file_get_contents("http://127.0.0.1:8000/reload");
 
         header('Content-Type: text/plain');
         printf("#EXTM3U\n");

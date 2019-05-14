@@ -25,6 +25,7 @@
 						<td>
                             <a href="<?php echo site_url('client/edit/'.$c['id']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
                             <a href="<?php echo site_url('client/remove/'.$c['id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            <a href="<?php echo site_url('client/rehash/'.$c['id']); ?>" class="btn btn-success btn-xs"><span class="fa fa-recycle"></span> ReHash</a>
                         </td>
                     </tr>
                     <tr>
