@@ -15,6 +15,7 @@ class Client_model extends CI_Model
 
     public function type() {
         $this->db->where("type_id", 0);
+        return $this;
     }
     
     public function get_client_by_hash($hash) {
