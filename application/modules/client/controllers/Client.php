@@ -21,10 +21,10 @@ class Client extends MX_Controller{
         
         $config = $this->config->item('pagination');
         $config['base_url'] = site_url('client/index?');
-        $config['total_rows'] = $this->Client_model->get_all_clients_count();
+        $config['total_rows'] = $this->Client_model->type()->get_all_clients_count();
         $this->pagination->initialize($config);
 
-        $data['clients'] = $this->Client_model->get_all_clients($params);
+        $data['clients'] = $this->Client_model->type()->get_all_clients($params);
         
         $data['_view'] = 'index';
         $this->load->view('layouts/main',$data);
@@ -44,6 +44,7 @@ class Client extends MX_Controller{
 		if($this->form_validation->run())     
         {   
             $params = array(
+                'type_id' => $this->Client_model->type_id,
 				'package_id' => $this->input->post('package_id'),
 				'mac' => $this->input->post('mac'),
 				'token' => sha1(time().rand(1000,9999).$this->input->post('mac')),
@@ -70,7 +71,7 @@ class Client extends MX_Controller{
     function edit($id)
     {   
         // check if the client exists before trying to edit it
-        $data['client'] = $this->Client_model->get_client($id);
+        $data['client'] = $this->Client_model->type()->get_client($id);
         
         if(isset($data['client']['id']))
         {
@@ -83,6 +84,7 @@ class Client extends MX_Controller{
 			if($this->form_validation->run())     
             {   
                 $params = array(
+                    'type_id' => $this->Client_model->type_id,
 					'package_id' => $this->input->post('package_id'),
 					'mac' => $this->input->post('mac'),
 					'comment' => $this->input->post('comment'),
@@ -110,7 +112,7 @@ class Client extends MX_Controller{
      */
     function remove($id)
     {
-        $client = $this->Client_model->get_client($id);
+        $client = $this->Client_model->type()->get_client($id);
 
         // check if the client exists before trying to delete it
         if(isset($client['id']))
@@ -123,7 +125,7 @@ class Client extends MX_Controller{
     }
 
     public function rehash($id) {
-        $client = $this->Client_model->get_client($id);
+        $client = $this->Client_model->type()->get_client($id);
         if(!isset($client['id'])) {
             redirect('client');
         }

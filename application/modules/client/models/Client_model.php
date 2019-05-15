@@ -4,11 +4,17 @@
  * www.crudigniter.com
  */
  
-class Client_model extends CI_Model
+class Client_model extends MX_Model
 {
+    public $type_id = 0;
+
     function __construct()
     {
         parent::__construct();
+    }
+
+    public function type() {
+        $this->db->where("type_id", 0);
     }
     
     public function get_client_by_hash($hash) {
