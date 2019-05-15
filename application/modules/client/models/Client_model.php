@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
  
-class Client_model extends MX_Model
+class Client_model extends CI_Model
 {
     public $type_id = 0;
 
