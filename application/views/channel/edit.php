@@ -30,6 +30,14 @@
 							<span class="text-danger"><?php echo form_error('stream_url');?></span>
 						</div>
 					</div>
+
+					<div class="col-md-6">
+						<label for="epg1" class="control-label"><span class="text-danger">*</span>TVG-ID</label>
+						<div class="form-group">
+							<input type="text" name="epg1" value="<?php echo (htmlspecialchars($this->input->post('epg1')) ? $this->input->post('epg1') : $channel['epg1']); ?>" class="form-control" id="epg1" />
+							<span class="text-danger"><?php echo form_error('epg1');?></span>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="box-footer">
