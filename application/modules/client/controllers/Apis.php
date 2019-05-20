@@ -48,7 +48,7 @@ class Apis extends MX_Controller {
         header('Content-Type: text/plain');
         printf("#EXTM3U\n");
         foreach($channels as $channel) {
-            printf('#EXTINF:-1 tvg-id="%s",%s'."\n", $channel['name'], $channel['name']);
+            printf('#EXTINF:-1 tvg-id="%s",%s'."\n", $channel['epg1'], $channel['name']);
             printf("%s%s\n",get_full_host(), site_url(sprintf("/apis/ii1/channel/%s/%s", $hash, $channel['url'])));
         }
     }
