@@ -1,3 +1,3 @@
 # vms
 
-how to setup - check our website https://streamingriver.github.io/
+how to setup - check our website https://streamingriveriptv.com
