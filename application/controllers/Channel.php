@@ -124,7 +124,7 @@ class Channel extends CI_Controller{
         if(isset($channel['id']))
         {
             $this->load->model('Channels_package_model');
-            $this->Channels_package_model->delete_by_channel($id);
+            $this->Channels_package_model->delete_channels_package($id);
             $this->Channel_model->delete_channel($id);
             redirect('channel/index');
         }
