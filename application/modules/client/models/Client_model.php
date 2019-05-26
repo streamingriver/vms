@@ -17,6 +17,11 @@ class Client_model extends CI_Model
         $this->db->where("type_id", 0);
         return $this;
     }
+
+    public function active($a = 1) {
+        $this->db->where("active", $a);
+        return $this;
+    }
     
     public function get_client_by_hash($hash) {
         return $this->db->get_where('clients', array("token"=>$hash,'active'=>1))->row_array();

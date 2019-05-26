@@ -15,7 +15,7 @@ class Apis extends MX_Controller {
         if($this->input->get("token") == "" || $this->input->get("token") != config_item("token")) {
             show_404();
         }
-        $items = $this->Client_model->get_all_clients();
+        $items = $this->Client_model->active()->get_all_clients();
 
         $response = array();
         foreach($items as $item) {
