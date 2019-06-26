@@ -33,9 +33,9 @@ class Channel_model extends CI_Model
     /*
      * Get all channels
      */
-    function get_all_channels()
+    function get_all_channels($sort,$type)
     {
-        $this->db->order_by('id', 'asc');
+        $this->db->order_by($sort, $type);
         return $this->db->get('channels')->result_array();
     }
         
