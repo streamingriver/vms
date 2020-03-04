@@ -149,7 +149,7 @@ class Channel extends CI_Controller{
         }
         file_put_contents($dir."ffmpeg.txt", $output);
 
-        $this->_fifo_send("cmd1");
+        $this->_fifo_send("cmd2");
 
         if($redirect) redirect('channel');
     }
