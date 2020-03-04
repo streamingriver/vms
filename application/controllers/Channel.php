@@ -19,7 +19,9 @@ class Channel extends CI_Controller{
      */
     function index()
     {
-        $data['channels'] = $this->Channel_model->get_all_channels();
+        $sort = null!==$this->input->get('sort')?$this->input->get('sort'):'id';
+        $type = null!==$this->input->get('type')?$this->input->get('type'):'asc';
+        $data['channels'] = $this->Channel_model->get_all_channels($sort,$type);
 
         $this->load->model('Package_model');
         $data['packages'] = $this->Package_model->get_all_packages();
