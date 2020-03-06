@@ -157,8 +157,8 @@ class Channel extends CI_Controller{
             }
 
         }
-        file_put_contents($dir."ffmpeg.txt", $output);
-        file_put_contents($dir."ffmpeg2.txt", $ffmpegoutput);
+        file_put_contents($dir."ffmpeg2.txt", $output);
+        file_put_contents($dir."ffmpeg.txt", $ffmpegoutput);
 
 
 
