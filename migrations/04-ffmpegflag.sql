@@ -1,1 +1,1 @@
-ALTER TABLE  `clients` ADD  `ffmpeg` INT NULL;
+ALTER TABLE  `channels` ADD  `ffmpeg` INT NULL;

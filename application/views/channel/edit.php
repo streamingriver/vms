@@ -38,6 +38,15 @@
 							<span class="text-danger"><?php echo form_error('epg1');?></span>
 						</div>
 					</div>
+						<div class="col-md-6">
+						<label for="ffmpeg" class="control-label">Use FFMPEG</label>
+						<div class="form-group">
+							<input type="hidden" name="ffmpeg" value="0" />
+<?php echo form_checkbox('ffmpeg', 1, $channel['ffmpeg']);?>
+							<span class="text-danger"><?php echo form_error('epg1');?></span>
+						</div>
+					</div>
+
 				</div>
 			</div>
 			<div class="box-footer">

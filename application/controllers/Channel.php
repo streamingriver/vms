@@ -95,7 +95,8 @@ class Channel extends CI_Controller{
                 $params = array(
                     'name' => htmlspecialchars($this->input->post('name')),
                     'stream_url' => trim(str_replace("'",'',str_replace('"','',escapeshellarg($this->input->post('stream_url'))))),
-                    'epg1' => htmlspecialchars($this->input->post('epg1'))
+                    'epg1' => htmlspecialchars($this->input->post('epg1')),
+		    'ffmpeg'=>$this->input->post('ffmpeg')
                 );
                 if(config_item("gui.can_edit_channel_url")) {
                     $params['url'] = escapeshellcmd($this->input->post("url"));
@@ -144,14 +145,15 @@ class Channel extends CI_Controller{
 
     public function update($redirect=true) {
         $dir = sprintf("%s%s", "/var/www/sr/_gen/", "");
-        $items = $this->Channel_model->get_all_channels();
+        $items = $this->Channel_model->get_all_channels('id', 'asc');
         $output = '';
         $ffmpegoutput = '';
         foreach($items as $item) {
-            if($item['ffmpeg'] == 0) {
+            if($item['ffmpeg'] == 1) {
                 $output .= sprintf("%s %s\n",$item['url'], sprintf("http://localhost:9005/%s/stream.m3u8", $item['url']));
-            } else {
                 $ffmpegoutput .= sprintf("%s %s\n", $item['url'], $item['stream_url']);
+            } else {
+                $output .= sprintf("%s %s\n", $item['url'], $item['stream_url']);
             }
 
         }
