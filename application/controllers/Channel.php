@@ -146,10 +146,19 @@ class Channel extends CI_Controller{
         $dir = sprintf("%s%s", "/var/www/sr/_gen/", "");
         $items = $this->Channel_model->get_all_channels();
         $output = '';
+        $ffmpegoutput = '';
         foreach($items as $item) {
-            $output .= sprintf("%s %s\n", $item['url'], $item['stream_url']);
+            if($item['ffmpeg'] == 0) {
+                $output .= sprintf("%s %s\n",$item['url'], sprintf("http://localhost:9005/%s/stream.m3u8", $item['url']));
+            } else {
+                $ffmpegoutput .= sprintf("%s %s\n", $item['url'], $item['stream_url']);
+            }
+
         }
         file_put_contents($dir."ffmpeg.txt", $output);
+        file_put_contents($dir."ffmpeg2.txt", $ffmpegoutput);
+
+
 
         $this->_fifo_send("cmd2");
 
