@@ -155,7 +155,7 @@ switch (ENVIRONMENT)
 	// if your controller is not in a sub-directory within the "controllers" one
 
 	// The controller class file name.  Example:  mycontroller
-	$routing['controller'] = 'webtv';
+	$routing['directory'] = 'webtv';
 
 	// The controller function you wish to be called.
 	// $routing['function']	= 'index';
