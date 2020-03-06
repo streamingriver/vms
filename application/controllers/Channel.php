@@ -51,7 +51,9 @@ class Channel extends CI_Controller{
             $params = array(
                 'name' => htmlspecialchars($this->input->post('name')),
                 'stream_url' => trim(str_replace("'",'',str_replace('"','',escapeshellcmd($this->input->post('stream_url'))))),
-                'epg1' => htmlspecialchars($this->input->post('epg1'))
+                'epg1' => htmlspecialchars($this->input->post('epg1')),
+                'ffmpeg'=>$this->input->post('ffmpeg')
+
             );
 
             if(config_item("gui.can_edit_channel_url")) {
@@ -96,7 +98,7 @@ class Channel extends CI_Controller{
                     'name' => htmlspecialchars($this->input->post('name')),
                     'stream_url' => trim(str_replace("'",'',str_replace('"','',escapeshellarg($this->input->post('stream_url'))))),
                     'epg1' => htmlspecialchars($this->input->post('epg1')),
-		    'ffmpeg'=>$this->input->post('ffmpeg')
+                    'ffmpeg'=>$this->input->post('ffmpeg')
                 );
                 if(config_item("gui.can_edit_channel_url")) {
                     $params['url'] = escapeshellcmd($this->input->post("url"));
